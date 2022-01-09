@@ -8,9 +8,15 @@ class App extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
     let { latitude, longitude } = position.coords
-     let locationResponse = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${
+     let locationRespomse = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${
        longitude}&key=52a24ce7d8224da799le0b87c729c88`)
        let weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=23dbdac88f7ef28c212457040bb05fc3`)
+
+       let weatherInfo = {
+         city: locationRespomse.data.results[0].components.postal.city,
+         temp:weatherResponse.data.current.temp
+       }
+       this.setState({ location:weatherInfo })
      })
   }
 
