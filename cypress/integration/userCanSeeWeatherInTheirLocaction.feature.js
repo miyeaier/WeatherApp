@@ -1,20 +1,21 @@
+
  describe("Weather info for usecp\'s location",()=>{
 
-    it('is expeected to be displayed on initial render',()=>{
-      cy.visit('/',({
-        onBeforeLoad(window) {
-          const stubLocation ={
-            coords:{
-              latitude: 55.7842,
-              longtude: 12.4518
-            }
-          };
-          cy.stub(window.navigator.geolocation,"getCurrentPosition").callsFake(
-            callback => {
-              return callback(stubLocation)
-            }
-          )
-        }
-      }))
-    })
-  })
+  it("is expected to be displayed on the intial render", () => {
+    cy.visit("http://localhost:3000", {
+      onBeforeload(window) {
+        const stubLocation = {
+          coords: { latitiude: 57.7308, longitute: 11.9834 },
+
+   
+        };
+        cy.stub(window.navigator.geolocation, "getCurrentPosition").callsFake(
+          (callback) => {
+            return callback(stubLocation);
+          }
+        );
+      },
+    });
+  });
+});
+  
