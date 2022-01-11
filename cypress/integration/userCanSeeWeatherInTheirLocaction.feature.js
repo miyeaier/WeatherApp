@@ -1,6 +1,6 @@
 describe("Weather info for usecp\'s location", () => {
   beforeEach(() => {
-    cy.intercept('https://api.openweathermap.org/data/2.5/**', {
+    cy.intercept("https://api.openweathermap.org/data/2.5/**", {
       fixture: "weather_response.json"
     })
     cy.intercept("https://api.opencagedata.com/geocode/v1/json/**", {
@@ -30,6 +30,5 @@ describe("Weather info for usecp\'s location", () => {
     cy.get("[data-cy=Country]").should("contain", "Sweden");
     cy.get("[data-cy=City]").should("contain", "Stockholm");
     cy.get("[data-cy=Temperature]").should("contain", "");
-});
-
+  });
 });

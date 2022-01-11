@@ -6,7 +6,6 @@ class App extends Component {
   state = {
     geolocation: {},
   };
-
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(async (position) => {
       let { latitude, longitude } = position.coords;
@@ -36,15 +35,14 @@ class App extends Component {
             Weather
           </Header>
         </Divider>
-
         <Table definition data-cy="table">
           <Table.Body>
             <Table.Row data-cy="Country">
-              <Table.Cell width={2} >Country</Table.Cell>
+              <Table.Cell width={2}>Country</Table.Cell>
               <Table.Cell>{this.state.location?.country}</Table.Cell>
             </Table.Row>
             <Table.Row data-cy="City">
-              <Table.Cell >City</Table.Cell>
+              <Table.Cell>City</Table.Cell>
               <Table.Cell>{this.state.location?.city}</Table.Cell>
             </Table.Row>
             <Table.Row data-cy="Temperature">
